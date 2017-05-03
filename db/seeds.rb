@@ -18,3 +18,12 @@ end
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+special_post = Post.find_or_create_by!(
+    title: "This post",
+    body: "is special."
+    )
+Comment.find_or_create_by!(
+    post: special_post,
+    body: "Real English!"
+    )
