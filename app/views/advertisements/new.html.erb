@@ -1,0 +1,27 @@
+
+<h1>Advertising with Bloccit</h1>
+<div class="row">
+    <div class="col-md-4">
+        <p>Bloccit is a high traffic site that caters to an expansive user base. We guarantee we can match you to your target demographic. Please submit your ad details here for screening.</p>
+    </div>
+    
+    <div class="col-md-8">
+        <%= form_for @advertisement do |f| %>
+            <div class="form-group">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: 'form-control', placeholder: "Enter ad title" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :body %>
+                <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter ad body" %>
+            </div>
+            <div class="form-group">
+                <%= f.label :price %>
+                <%= f.text_field :price, class: 'form-control', placeholder: "Price (in whole dollars)" %>
+            </div>
+            <div class="form-group">
+                <%= f.submit "Save", class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+</div>
