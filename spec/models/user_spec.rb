@@ -34,4 +34,17 @@ RSpec.describe User, type: :model do
      end
      
   end
+  
+  describe "unformatted name" do
+     let(:lowercase_user) { User.new(name: "walt sidney doled", email:"wad@todd.com", password:"potatoes") }
+     let(:wonky_user) { User.new(name: "bO sidWAey saTF", email:"wad@todd.com", password: "potatoes") }
+     it "should be properly formatted" do
+         lowercase_user.save
+        expect(lowercase_user.name).to eq "Walt Sidney Doled"
+     end
+     it "should resolve wonky lettering" do
+         wonky_user.save
+        expect(wonky_user.name).to eq "Bo Sidwaey Satf" 
+     end
+  end
 end
