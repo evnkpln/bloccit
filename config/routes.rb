@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
 
-  get 'about' => 'wecome#about'
+  get 'about', to: 'welcome#about'
 
   root 'welcome#index'
 end
