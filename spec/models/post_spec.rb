@@ -75,4 +75,22 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+  
+  describe "post self-votes" do
+    before do
+      @up_votes = post.votes.where(value: 1).count
+    end
+    
+    it "initializes post with an upvote" do
+      expect(post.up_votes).to eq(1)
+    end
+    
+    it "starts with a score of 1" do
+      expect(post.points).to eq(1)
+    end
+    
+    it "associates user with the initial vote" do
+      expect(post.votes.first.user).to eq(user)
+    end
+  end
 end
