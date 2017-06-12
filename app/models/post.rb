@@ -13,6 +13,7 @@ class Post < ActiveRecord::Base
     validates :user, presence: true
     
     after_create :create_vote
+    after_create :create_favorite
     
     def up_votes
         votes.where(value: 1).count
@@ -36,5 +37,10 @@ class Post < ActiveRecord::Base
     
     def create_vote
         user.votes.create!(post: self, value: 1)
+    end
+    
+    def create_favorite
+        user.favorites.create!(post: self)
+        FavoriteMailer.new_post(user, self).deliver_now
     end
 end
